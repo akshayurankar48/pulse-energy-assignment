@@ -6,10 +6,15 @@ import express, { Express } from 'express';
 import { MqttClient, connect } from 'mqtt';
 import http from 'http';
 import mongoose from 'mongoose';
-import { sendRecords } from './utils/sendRecords';
+import bodyParser from 'body-parser';
+import compression from 'compression';
+import cors from 'cors';
 
 // Import the router for handling charging point routes
 import router from './routes/chargingPointRoute';
+
+// Import utility function for sending records to MQTT server
+import { sendRecords } from './utils/sendRecords';
 
 // Import custom error middleware
 import { errorMiddleware } from './middlewares/errorMiddleware';
@@ -25,7 +30,19 @@ const mqttClient: MqttClient = connect(BROKER_URL);
 // Create an Express application
 const app: Express = express();
 
+// CORS configuration for allowing cross-origin requests
+var corsOptions: {
+  origin: string;
+  optionsSuccessStatus: number;
+} = {
+  origin: '*',
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
 // Apply middleware for enabling CORS, compression, JSON body parsing, and custom error handling
+app.use(cors(corsOptions));
+app.use(compression());
+app.use(bodyParser.json());
 app.use(errorMiddleware);
 
 // Event handler when MQTT client connects
