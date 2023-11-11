@@ -1,4 +1,8 @@
 import express from 'express';
+import {
+  getAllChargingData,
+  getChargingDataById,
+} from 'controllers/chargingPointController';
 
 // Create an instance of Express Router
 const router = express.Router();
