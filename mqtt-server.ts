@@ -16,3 +16,23 @@ mqttServer.on('connect', () => {
   mqttServer.subscribe('pulseEnergy');
   console.log('MQTT Server started successfully!');
 });
+
+// Event handlers for MQTT server close, end, and error events
+mqttServer.on('close', () => {
+  handleServerClose();
+});
+
+mqttServer.on('end', () => {
+  handleServerClose();
+});
+
+mqttServer.on('error', (error) => {
+  console.log('Error occurred:', error);
+  handleServerClose();
+});
+
+// Function to handle closing the MQTT server and disconnecting from MongoDB
+function handleServerClose() {
+  mqttServer.unsubscribe('pulseEnergy');
+  console.log('Server closed.');
+}
