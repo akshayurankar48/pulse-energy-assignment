@@ -1,13 +1,13 @@
 import fs from 'fs';
 import csv from 'csv-parser';
 import { MqttClient } from 'mqtt';
-// import { Record, Payload } from '../../index.d';
+import { Record, Payload } from '../../index.d';
 
 const csvFilePath: string = 'meter_values.csv';
 
 // Read CSV file and send records at 5-second intervals
 export const sendRecords: (mqttClient: MqttClient) => void = (mqttClient) => {
-  const records: any[] = [];
+  const records: Record[] = [];
 
   fs.createReadStream(csvFilePath)
     .pipe(csv())
@@ -16,7 +16,7 @@ export const sendRecords: (mqttClient: MqttClient) => void = (mqttClient) => {
       // For example, parse JSON and extract charge_point_id and payload
       const data: {
         charge_point_id: string;
-        payload: any;
+        payload: Payload;
       } = {
         charge_point_id: row.charge_point_id,
         payload: JSON.parse(row.payload),
