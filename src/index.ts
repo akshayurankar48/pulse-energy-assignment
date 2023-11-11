@@ -8,6 +8,9 @@ import http from 'http';
 import mongoose from 'mongoose';
 import { sendRecords } from './utils/sendRecords';
 
+// Import the router for handling charging point routes
+import router from './routes/chargingPointRoute';
+
 // Retrieve values from environment variables or use default values
 const PORT: string | 8000 = process.env.PORT || 8000;
 const MONGO_URI: string = process.env.MONGO_URI;
@@ -41,3 +44,6 @@ mongoose.connect(MONGO_URI);
 
 // Event handler for MongoDB connection errors
 mongoose.connection.on('error', (error: Error) => console.log(error));
+
+// Use the charging point router for handling API routes under the '/api' path
+app.use('/api', router());
