@@ -6,7 +6,7 @@ import express, { Express } from 'express';
 import { MqttClient, connect } from 'mqtt';
 import http from 'http';
 import mongoose from 'mongoose';
-import { sendRecords } from 'utils/sendRecords';
+import { sendRecords } from './utils/sendRecords';
 
 // Retrieve values from environment variables or use default values
 const PORT: string | 8000 = process.env.PORT || 8000;
