@@ -35,6 +35,18 @@ mqttServer.on('connect', () => {
   });
 });
 
+// Event handler for incoming MQTT messages on the 'pulseEnergy' topic
+mqttServer.on('message', async (topic: string, message: Buffer) => {
+  // Check if the received topic is 'pulseEnergy'
+  if (topic === 'pulseEnergy') {
+    const messagePayload = JSON.parse(message.toString());
+    console.log(messagePayload);
+  } else {
+    // Log a message for topic mismatch
+    console.log('Topic mismatch.');
+  }
+});
+
 // Event handlers for MQTT server close, end, and error events
 mqttServer.on('close', () => {
   handleServerClose();
