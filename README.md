@@ -149,3 +149,6 @@ The project is built using the following technologies and dependencies:
 ## Contributing
 
 Feel free to contribute to this project. Create a fork, make your changes, and submit a pull request.
+
+Loom video link - https://drive.google.com/file/d/1YdFr6XQVIgS3Lp1yKxZwXYApsFdSqiqz/view?usp=sharing
+Source folder link - https://drive.google.com/drive/folders/1vsPrOaI6dlSxTv_qUkcVYYAPRVGz-NBv
