@@ -11,6 +11,9 @@ import { sendRecords } from './utils/sendRecords';
 // Import the router for handling charging point routes
 import router from './routes/chargingPointRoute';
 
+// Import custom error middleware
+import { errorMiddleware } from './middlewares/errorMiddleware';
+
 // Retrieve values from environment variables or use default values
 const PORT: string | 8000 = process.env.PORT || 8000;
 const MONGO_URI: string = process.env.MONGO_URI;
@@ -21,6 +24,9 @@ const mqttClient: MqttClient = connect(BROKER_URL);
 
 // Create an Express application
 const app: Express = express();
+
+// Apply middleware for enabling CORS, compression, JSON body parsing, and custom error handling
+app.use(errorMiddleware);
 
 // Event handler when MQTT client connects
 mqttClient.on('connect', () => {
