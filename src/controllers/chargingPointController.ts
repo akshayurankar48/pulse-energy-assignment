@@ -48,4 +48,21 @@ export const getAllChargingData = async (
 export const getChargingDataById = async (
   req: express.Request,
   res: express.Response
-) => {};
+) => {
+  try {
+    // Extract the charge point ID from the request parameters
+    const { id }: { id?: string } = req.params;
+
+    // Query MongoDB to get charging data for the specified ID
+    const chargingData = await ChargingData.findOne({
+      charge_point_id: id,
+    });
+
+    // Send a JSON response with the retrieved charging data
+    res.status(200).json(chargingData);
+  } catch (error) {
+    // Log and handle any errors that occur during the process
+    console.log(error);
+    return res.sendStatus(400);
+  }
+};
