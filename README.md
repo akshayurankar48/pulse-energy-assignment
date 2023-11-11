@@ -2,20 +2,26 @@
 
 This project is an Express.js-based API for managing charging data from electric vehicles. It utilizes MongoDB for data storage and MQTT for real-time data communication.
 
+## Loom video link -  https://drive.google.com/file/d/1YdFr6XQVIgS3Lp1yKxZwXYApsFdSqiqz/view?usp=sharing
+
+## Source folder link - https://drive.google.com/drive/folders/1vsPrOaI6dlSxTv_qUkcVYYAPRVGz-NBv
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-  - [Run the Server](#run-the-server)
-  - [API Endpoints](#api-endpoints)
+- [Run the Server](#run-the-server)
+- [API Endpoints](#api-endpoints)
 - [Project Structure](#project-structure)
 - [Development Approach](#development-approach)
 - [Future Improvements](#future-improvements)
 - [Tech Stack](#tech-stack)
 - [Contributing](#contributing)
+- [Loom video link](#loom)
+- [Source folder link ](#source)
 
 ## Getting Started
 
