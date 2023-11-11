@@ -1,8 +1,9 @@
 import express from 'express';
+// Import controller functions for handling charging point routes
 import {
   getAllChargingData,
   getChargingDataById,
-} from 'controllers/chargingPointController';
+} from '../controllers/chargingPointController';
 
 // Create an instance of Express Router
 const router = express.Router();
