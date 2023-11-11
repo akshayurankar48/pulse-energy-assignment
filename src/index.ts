@@ -6,6 +6,7 @@ import express, { Express } from 'express';
 import { MqttClient, connect } from 'mqtt';
 import http from 'http';
 import mongoose from 'mongoose';
+import { sendRecords } from 'utils/sendRecords';
 
 // Retrieve values from environment variables or use default values
 const PORT: string | 8000 = process.env.PORT || 8000;
@@ -21,6 +22,8 @@ const app: Express = express();
 // Event handler when MQTT client connects
 mqttClient.on('connect', () => {
   console.log('Connected to MQTT Server!');
+  // Call utility function to send records to the MQTT server
+  sendRecords(mqttClient);
 });
 
 // Create an HTTP server using the Express application
