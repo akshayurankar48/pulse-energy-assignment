@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "server": "ts-node mqtt-server.ts"
   },
   "keywords": [],
   "author": "",
